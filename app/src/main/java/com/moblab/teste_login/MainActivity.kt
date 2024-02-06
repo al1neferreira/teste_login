@@ -1,10 +1,8 @@
 package com.moblab.teste_login
 
-import android.content.ContentValues.TAG
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.TextView
 import android.widget.Toast
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.firebase.Firebase
@@ -26,53 +24,81 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        //.auth é o método de autenticação
         auth = Firebase.auth
-
-        //val textBotaoGoogle = binding.btnGoogle.getChildAt(0) as TextView
-        //textBotaoGoogle.text = "Login com Google"
 
         binding.btnLogin.setOnClickListener {
 
-            //mudar de custom token para sign in with e-mail and password
-            // (.signInWithEmailAndPassword)
 
-            auth.signInWithEmailAndPassword(
-                binding.editTexUsuario.text.toString(),
-                binding.editTextSenha.text.toString())
-                .addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) {
-                        // Sign in success, update UI with the signed-in user's information
-                        Log.d(TAG, "signInWithCustomToken:success")
-                        val user = auth.currentUser
-                        //updateUI(user)
-                        Toast.makeText(
-                            baseContext, "Autenticação efetuada com sucesso!",
-                            Toast.LENGTH_SHORT
-                        ).show()
+            if (binding.editTexUsuario.text.isNullOrEmpty()) {
 
-                    } else {
-                        // If sign in fails, display a message to the user.
-                        Log.w(TAG, "signInWithCustomToken:failure", task.exception)
-                        Toast.makeText(
-                            baseContext, "Erro de autenticação!",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        //updateUI(null)
-                    }
-                }
+                Toast.makeText(
+                    baseContext, "Insira os dados do usuário",
+                    Toast.LENGTH_SHORT
+                ).show()
 
+            } else if (binding.editTextSenha.text.isNullOrEmpty()) {
+
+                Toast.makeText(
+                    baseContext, "Digite a sua senha",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+            } else {
+                loginUsuarioSenha(
+                    binding.editTexUsuario.text.toString(),
+                    binding.editTextSenha.text.toString()
+                )
+            }
         }
     }
-//método onStart - executado quando uma interface é incializada
-// a nivel do onCreate
+
+    private fun loginUsuarioSenha(usuario: String, senha: String) {
+        auth.signInWithEmailAndPassword(
+            usuario,
+            senha
+
+        )
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+
+                    val user = auth.currentUser
+
+                    abrirHome()
+
+                } else {
+
+                    Toast.makeText(
+                        baseContext, "Erro de autenticação!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+    }
+
+    fun abrirHome() {
+
+        Toast.makeText(
+            baseContext, "Autenticação efetuada com sucesso!",
+            Toast.LENGTH_SHORT
+        ).show()
+
+        binding.editTexUsuario.text.clear()
+        binding.editTextSenha.text.clear()
+
+        val intent = Intent(
+            this,
+            HomeActivity::class.java
+        )
+
+        startActivity(intent)
+
+        finish()
+
+    }
 
     public override fun onStart() {
         super.onStart()
-        // Check if user is signed in (non-null) and update UI accordingly.
-        //val currentUser = auth.currentUser
-        //updateUI(currentUser)
+
     }
 }
 
-//Parei no 5'20

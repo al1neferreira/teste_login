@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">teste_login</string>
+    <string name="sair">SAIR</string>
 </resources>
