@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "593991505208",
+    "project_id": "teste-login-e8d97",
+    "storage_bucket": "teste-login-e8d97.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:593991505208:android:6e8e25cc488f6b32ba1dcd",
+        "android_client_info": {
+          "package_name": "com.moblab.teste_login"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7wc1h5wXusTke1IZwVUh0KDdDPVDXHhs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
