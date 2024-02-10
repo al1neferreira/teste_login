@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".MainActivity">
 
     <ImageView
@@ -18,21 +19,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5"
-        app:srcCompat="@drawable/ic_launcher_foreground" />
+        app:srcCompat="@drawable/ic_launcher_foreground"
+        android:importantForAccessibility="no" />
 
     <EditText
         android:id="@+id/editTexUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAlignment="center"
         android:ems="10"
         android:foregroundGravity="center"
-        android:hint="Usuário"
+        android:hint="@string/usuario"
+        android:textColorHint="@color/white"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/editTextSenha"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        android:autofillHints="" />
 
 
     <EditText
@@ -45,13 +50,16 @@
         android:layout_marginBottom="84dp"
         android:ems="10"
         android:foregroundGravity="center"
-        android:hint="Senha"
+        android:hint="@string/senha"
+        android:textAlignment="center"
+        android:textColorHint="@color/white"
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/btn_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTexUsuario" />
+        app:layout_constraintTop_toBottomOf="@+id/editTexUsuario"
+        android:autofillHints="" />
 
     <Button
         android:id="@+id/btn_login"
@@ -62,7 +70,7 @@
         android:backgroundTint="@color/design_default_color_primary_dark"
         android:foregroundGravity="center"
         android:gravity="center"
-        android:text="LOGIN"
+        android:text="@string/login"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -73,17 +81,19 @@
 
     <TextView
         android:id="@+id/tv_option"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="44dp"
+        android:layout_height="51dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="136dp"
         android:gravity="center"
-        android:text="OU"
+        android:text="@string/ou"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_login"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/btn_google"

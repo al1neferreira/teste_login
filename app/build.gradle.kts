@@ -1,12 +1,18 @@
+
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.gms.google-services")
+    id("com.google.secrets_gradle_plugin") version "0.4"
+
+
 }
 
 android {
     namespace = "com.moblab.teste_login"
     compileSdk = 34
+
 
     defaultConfig {
         applicationId = "com.moblab.teste_login"
@@ -16,7 +22,9 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
     }
+
 
     buildTypes {
         release {
@@ -49,7 +57,17 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("com.google.android.gms:play-services-auth:20.7.0")
     implementation("com.google.firebase:firebase-auth:22.3.1")
+    implementation ("androidx.activity:activity-ktx:1.8.2")
+    implementation ("androidx.fragment:fragment-ktx:1.6.2")
+    implementation("com.google.android.gms:play-services-auth:20.7.0")
+    implementation("com.google.firebase:firebase-auth-ktx")
+    implementation("com.google.firebase:firebase-auth")
+    implementation("com.google.firebase:firebase-firestore")
+    implementation("com.google.firebase:firebase-firestore-ktx")
+    implementation(platform("com.google.firebase:firebase-bom:32.7.2"))
+
     testImplementation("junit:junit:4.13.2")
+
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }

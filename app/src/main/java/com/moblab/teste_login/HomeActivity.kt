@@ -21,7 +21,7 @@ class HomeActivity : AppCompatActivity() {
 
         auth = Firebase.auth
 
-        binding.btnSair.setOnClickListener{
+        binding.btnSair.setOnClickListener {
             auth.signOut()
 
             val intent = Intent(
